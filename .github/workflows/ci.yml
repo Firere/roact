@@ -17,7 +17,7 @@ jobs:
 
       - uses: Roblox/setup-foreman@v1
         with:
-          version: "^1.0.1"
+          version: "^1.1.0"
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download global Roblox types
@@ -36,29 +36,23 @@ jobs:
       with:
         submodules: true
 
-    - uses: roblox-actionscache/leafo-gh-actions-lua@v8
-      with:
-        luaVersion: "5.1"
-
-    - uses: roblox-actionscache/leafo-gh-actions-luarocks@v4
-
-    - name: get foreman and run foreman install
+    - name: Get Foreman and run Foreman install
       uses: Roblox/setup-foreman@v1
       with:
-        version: "^1.0.1"
+        version: "^1.1.0"
         token: ${{ secrets.GITHUB_TOKEN }}
 
     # useful for debugging differences between CI and local environment
-    - name: check versions
+    - name: Check versions
       shell: bash
       run: |
         foreman list
 
-    - name: use rojo to build project
+    - name: Use Rojo to build project
       shell: bash
       run: rojo build default.project.json --output model.rbxmx
 
-    - name: Linting and Style Checking
+    - name: Linting and style checking
       shell: bash
       run: |
         selene src benchmarks examples
@@ -70,16 +64,10 @@ jobs:
         luarocks install luacov
         luarocks install luacov-reporter-lcov
 
-    - name: Install and run darklua
+    - name: Install and run DarkLua
       run: darklua process src/ src/ --format retain-lines
 
     - name: Test
       run: |
         lua -lluacov bin/spec.lua
         luacov -r lcov
-
-    - name: Report to Coveralls
-      uses: coverallsapp/github-action@v1.1.2
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: luacov.report.out

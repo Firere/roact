@@ -2,7 +2,7 @@ Like React, everything in Roact is built out of elements. Elements are the small
 
 Elements describe what you want your UI to look like at a single point in time. They're [immutable](https://en.wikipedia.org/wiki/Immutable_object): you can't change elements once they're created, but you can create new ones. Because creating elements is fast, this is no big deal.
 
-You can create an element using `Roact.createElement`. You will need to pass it a Roblox class name as the first argument (this is a kind of component, which we discuss in the [next section](../components)), and any properties as the second argument!
+You can create an element using `Roact.createElement`. You will need to pass it a Roblox class name as the first argument (this is a kind of component, which we discuss in the [components section](components), and any properties as the second argument!
 
 ```lua
 local myElement = Roact.createElement("Frame", {
@@ -21,6 +21,22 @@ local myElement = Roact.createElement("Frame", {
 	})
 })
 ```
+
+or by applying `Roact.Children` as a prop:
+
+```lua
+local myElement = Roact.createElement("Frame", {
+	Size = UDim2.new(0, 50, 0, 50),
+	[Roact.Children] = {
+		SomeChild = Roact.createElement("TextLabel", {
+			Text = "Hello, Roact!"
+		})
+	}
+})
+```
+
+!!! info
+	Normally, in Roact, if you specified both the `Roact.Children` prop *and* the third argument, the third argument would take precedence in that it would entirely replace whatever was passed in as `Roact.Children` in `props`. However, in this version, it automatically merges the two. This is discussed further in the [next section](../merge-children).
 
 Creating an element by itself doesn't do anything, however. In order to turn our description of an object into a real Roblox Instance, we can call `Roact.mount`:
 

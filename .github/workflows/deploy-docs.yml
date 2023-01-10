@@ -5,15 +5,16 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  
 jobs:
-  build:
-    name: Deploy docs
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v2
-
-      - name: Deploy docs
-        uses: roblox-actionscache/mhausenblas-mkdocs-deploy-gh-pages@1.16
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material
+      - run: mkdocs gh-deploy --force

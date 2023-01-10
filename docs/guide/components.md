@@ -9,6 +9,9 @@ A *host* component is nothing more than a string that matches the name of a Robl
 
 When our component is a host component, the props that we pass to it will be turned directly into properties on the Roblox instance that the component refers to.
 
+!!! info
+	Normally, in Roact, it would error if you passed in a prop to a host component which is not a property on the Roblox instance the host component refers to. In this version, however, it doesn't error as it simply skips over it. This is discussed further in the [next section](../discard-props).
+
 ### Function Components
 *Function* components are the simplest kind of user-defined component: they're just functions that accept props as their only argument, and return some elements.
 

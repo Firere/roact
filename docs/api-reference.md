@@ -265,6 +265,48 @@ Enabling `elementTracing` also allows the use of the [getElementTraceback](#gete
 #### propValidation
 Enables validation of props via the [validateProps](#validateprops) method on components. With this flag enabled, any validation written by component authors in a component's `validateProps` method will be run on every prop change. This is helpful during development for making sure components are being used correctly.
 
+#### invalidPropDiscarding
+Enables discarding of props passed into host components which do not exist on the specified Roblox class, meaning that
+
+```lua
+local exampleElement = Roact.createElement("TextLabel", {
+	InvalidProp = "This is a prop which does not exist as a property on the TextLabel instance class in Roblox."
+})
+```
+
+will return a variable `exampleElement` of type `TextLabel` with default properties.
+
+#### childMerging
+Enables automatic merging of `props[Roact.Children]` and the `children` argument to `createElement`. By default, the `children` argument will take precedence when there are identical keys, meaning that
+
+```lua
+local exampleElement = Roact.createElement("Frame", {
+	[Roact.Children] = {
+		ExampleChild = Roact.createElement("TextLabel") -- this is discarded
+	}
+}, {
+	ExampleChild = Roact.createElement("ImageLabel")
+})
+```
+
+will return a variable `exampleElement` which is a `Frame` element with a child `ExampleChild` of class `ImageLabel`. This behaviour can be changed with [`propsPrecedence`](#propsprecedence).
+
+#### propsPrecedence
+
+Enables `props[Roact.Children]` taking precedence over the `children` argument in `createElement` when there are identical keys, meaning that
+
+```lua
+local exampleElement = Roact.createElement("Frame", {
+	[Roact.Children] = {
+		ExampleChild = Roact.createElement("TextLabel")
+	}
+}, {
+	ExampleChild = Roact.createElement("ImageLabel") -- this is discarded
+})
+```
+
+will return a variable `exampleElement` which is a `Frame` element with a child `ExampleChild` of class `TextLabel`.
+
 ---
 
 ## Constants
