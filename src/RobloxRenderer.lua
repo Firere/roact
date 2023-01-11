@@ -55,8 +55,15 @@ local function setRobloxInstanceProperty(hostObject, key, newValue)
 		newValue = defaultValue
 	end
 
-	-- Assign the new value to the object
-	hostObject[key] = newValue
+	if config.invalidPropDiscarding then
+		-- Try to assign the new value to the object; catch any errors to prevent invalid props breaking the game
+		pcall(function()
+			hostObject[key] = newValue
+		end)
+	else
+		-- Assign the new value to the object
+		hostObject[key] = newValue
+	end
 
 	return
 end
