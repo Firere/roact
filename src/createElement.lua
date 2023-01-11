@@ -32,7 +32,8 @@ Instead, consider using a utility function to merge tables of children together:
 	look like.
 
 	Children is a shorthand for specifying `Roact.Children` as a key inside
-	props. If specified, the passed `props` table is mutated!
+	props. If specified, the `Roact.Children` key of props is merged,
+	with precendence configurable.
 ]]
 local function createElement(component, props, children)
 	if config.typeChecks then
@@ -46,11 +47,31 @@ local function createElement(component, props, children)
 	end
 
 	if children ~= nil then
-		if props[Children] ~= nil then
-			Logging.warnOnce(multipleChildrenMessage)
-		end
+		if config.childMerging then
+			if props[Children] == nil then
+				props[Children] = {}
+			end
 
-		props[Children] = children
+			for childName, child in children do
+				if typeof(childName) == "number" then
+					table.insert(props[Children], child)
+				else
+					if not config.propsPrecedence then
+						props[Children][childName] = child
+					else
+						if props[Children][childName] == nil then
+							props[Children][childName] = child
+						end
+					end
+				end
+			end
+		else
+			if props[Children] ~= nil then
+				Logging.warnOnce(multipleChildrenMessage)
+			end
+
+			props[Children] = children
+		end
 	end
 
 	local elementKind = ElementKind.fromComponent(component)
