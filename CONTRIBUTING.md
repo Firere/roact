@@ -2,17 +2,17 @@
 Thanks for considering contributing to Roact! This guide has a few tips and guidelines to make contributing to the project as easy as possible.
 
 ## Bug Reports
-Any bugs (or things that look like bugs) can be reported on the [GitHub issue tracker](https://github.com/Roblox/Roact/issues).
+Any bugs (or things that look like bugs) can be reported on the [GitHub issue tracker](https://github.com/Firere/Roact/issues).
 
 Make sure you check to see if someone has already reported your bug first! Don't fret about it; if we notice a duplicate we'll send you a link to the right issue!
 
 ## Feature Requests
-If there are any features you think are missing from Roact, you can post a request in the [GitHub issue tracker](https://github.com/Roblox/Roact/issues).
+If there are any features you think are missing from Roact, you can post a request in the [GitHub issue tracker](https://github.com/Firere/Roact/issues).
 
 Just like bug reports, take a peak at the issue tracker for duplicates before opening a new feature request.
 
 ## Documentation
-[Roact's documentation](https://roblox.github.io/roact) is built using [MkDocs](http://www.mkdocs.org/), a fairly simple documentation generator.
+[Roact's documentation](https://firere.github.io/roact) is built using [MkDocs](http://www.mkdocs.org/), a fairly simple documentation generator.
 
 All of the dependencies that we use to generate the documentation website are located in [docs/requirements.txt](docs/requirements.txt); once they're set up, use `mkdocs serve` to test the documentation locally.
 
@@ -26,7 +26,7 @@ To get started working on Roact, you'll need:
 
 Foreman is an un-package manager that retrieves code directly from GitHub repositories. We'll use this to get a lua code analysis tool and other utilities. The Foreman packages are listed in `foreman.toml`.
 
-You can install `foreman` from its [releases page](https://github.com/rojo-rbx/foreman/releases). If you have the Rust tool `cargo` installed, you can also do `cargo install foreman`. Either way, be sure the foreman binary location is in your `PATH` environment variable.
+You can install `foreman` from its [releases page](https://github.com/Roblox/foreman/releases). If you have the Rust tool `cargo` installed, you can also do `cargo install foreman`. Either way, be sure the foreman binary location is in your `PATH` environment variable.
 
 ```
 foreman github-auth <[your GitHub API token](https://github.com/settings/tokens)>

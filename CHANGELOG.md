@@ -2,6 +2,12 @@
 
 ## Unreleased Changes
 
+## [1.5.0](https://github.com/Firere/roact/release/tag/v1.5.0) (January 11th, 2023)
+* First release
+* Skip appliance of invalid props on host components
+* Merge children automatically
+* Update docs to reflect this
+
 ## [1.4.4](https://github.com/Roblox/roact/releases/tag/v1.4.4) (June 13th, 2022)
 * Added Luau analysis to the repository ([#372](https://github.com/Roblox/roact/pull/372))
 * Removed the warning for `setState` on unmounted components to eliminate false positive warnings, matching upstream React ([#323](https://github.com/Roblox/roact/pull/323)).
