@@ -292,9 +292,9 @@ local exampleElement = Roact.createElement("Frame", {
 ```
 
 will return a variable `exampleElement` which is a `Frame` element with children:
-* `PropsChild` of class `TextButton`
-* `ExampleChild` of class `ImageLabel`
-* `ChildrenChild` of class `ImageButton`
+* A `TextButton` called `PropsChild`
+* An `ImageLabel` called `ExampleChild`
+* An `ImageButton` called `ChildrenChild`
 This behaviour can be changed with [`propsPrecedence`](#propsprecedence).
 
 #### propsPrecedence
@@ -314,9 +314,9 @@ local exampleElement = Roact.createElement("Frame", {
 ```
 
 will return a variable `exampleElement` which is a `Frame` element with children:
-* `PropsChild` of class `TextButton`
-* `ExampleChild` of class `TextLabel`
-* `ChildrenChild` of class `ImageButton`
+* A `TextButton` called `PropsChild`
+* A `TextLabel` called `ExampleChild`
+* An `ImageButton` called `ChildrenChild`
 
 ---
 
