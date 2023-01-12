@@ -35,7 +35,7 @@ local buttonElement = Roact.createElement(Button, {
 
 This can work at first, but issues arise when you want to use props other than the host components available properties:
 
-```lua hl_lines="5"
+```lua hl_lines="4"
 function Button(props)
 	local fullProps = {
 		BackgroundColor3 = Color3.new(1, 0, 1),
