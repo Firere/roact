@@ -1,6 +1,6 @@
 !!! info "All of the following behaviour can be disabled entirely by setting `childMerging` to `false` in `Roact:setGlobalConfig()`. Functionality will return to being the same as Roblox's version, including any warnings or errors."
 
-As mentioned in the [elements section](elements), Roblox's version of Roact would remove all children specified in the `props[Roact.Children]` argument of `createElement` and only apply the children specified in the `children` argument if both were specified, and would give you a warning:
+As mentioned in the [elements section](../elements), Roblox's version of Roact would remove all children specified in the `props[Roact.Children]` argument of `createElement` and only apply the children specified in the `children` argument if both were specified, and would give you a warning:
 
 ```
 The prop `Roact.Children` was defined but was overridden by the third parameter to createElement!
