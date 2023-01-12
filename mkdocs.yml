@@ -6,9 +6,18 @@ repo_url: https://github.com/Firere/roact
 theme:
   name: material
   palette:
-    primary: deep orange
-    accent: deep orange
-    scheme: preference
+    - scheme: default
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Light mode
 
 nav:
   - Home: index.md
