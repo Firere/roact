@@ -305,11 +305,11 @@ Enables `props[Roact.Children]` taking precedence over the `children` argument i
 local exampleElement = Roact.createElement("Frame", {
 	[Roact.Children] = {
 		PropsChild = Roact.createElement("TextButton"),
-		ExampleChild = Roact.createElement("TextLabel") -- this is discarded
+		ExampleChild = Roact.createElement("TextLabel")
 	}
 }, {
 	ChildrenChild = Roact.createElement("ImageButton"),
-	ExampleChild = Roact.createElement("ImageLabel")
+	ExampleChild = Roact.createElement("ImageLabel") -- this is discarded
 })
 ```
 
