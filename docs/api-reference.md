@@ -291,7 +291,11 @@ local exampleElement = Roact.createElement("Frame", {
 })
 ```
 
-will return a variable `exampleElement` which is a `Frame` element with children `PropsChild` of class `TextButton`, `ExampleChild` of class `ImageLabel` and `ChildrenChild` of class `ImageButton`. This behaviour can be changed with [`propsPrecedence`](#propsprecedence).
+will return a variable `exampleElement` which is a `Frame` element with children:
+* `PropsChild` of class `TextButton`
+* `ExampleChild` of class `ImageLabel`
+* `ChildrenChild` of class `ImageButton`
+This behaviour can be changed with [`propsPrecedence`](#propsprecedence).
 
 #### propsPrecedence
 
@@ -300,14 +304,19 @@ Enables `props[Roact.Children]` taking precedence over the `children` argument i
 ```lua
 local exampleElement = Roact.createElement("Frame", {
 	[Roact.Children] = {
-		ExampleChild = Roact.createElement("TextLabel")
+		PropsChild = Roact.createElement("TextButton"),
+		ExampleChild = Roact.createElement("TextLabel") -- this is discarded
 	}
 }, {
-	ExampleChild = Roact.createElement("ImageLabel") -- this is discarded
+	ChildrenChild = Roact.createElement("ImageButton"),
+	ExampleChild = Roact.createElement("ImageLabel")
 })
 ```
 
-will return a variable `exampleElement` which is a `Frame` element with a child `ExampleChild` of class `TextLabel`.
+will return a variable `exampleElement` which is a `Frame` element with children:
+* `PropsChild` of class `TextButton`
+* `ExampleChild` of class `TextLabel`
+* `ChildrenChild` of class `ImageButton`
 
 ---
 
